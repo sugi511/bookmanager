@@ -20,10 +20,25 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :development, :test do
+ gem "rspec"
+ gem "capybara"
+ gem "rspec-rails"
+ gem "guard-rspec"
+ gem "jasmine"
+end
+
+group :development do
+ gem "rails3-generators"
+end
+
+group :test do
+ gem "factory_girl_rails"
+end
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
@@ -32,7 +47,7 @@ gem 'jquery-rails'
 # gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
 
 # To use debugger
 # gem 'debugger'
