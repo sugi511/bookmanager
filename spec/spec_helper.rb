@@ -57,6 +57,9 @@ Spork.each_run do
       load file
     end
   end
+  FactoryGirl.definition_file_paths = ["#{ ::Rails.root }/spec/factories"]
+  # FactoryGirl.find_definitions
+  FactoryGirl.reload
 end
 
 # --- Instructions ---

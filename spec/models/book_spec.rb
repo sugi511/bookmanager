@@ -3,43 +3,35 @@ require 'spec_helper'
 describe Book do
   context 'index action' do
     before do
-      @title = "Programming hoge"
-      @published_on = "2012-01-01"
-
-      Book.create(title: @title, published_on: @published_on)
-      @book = Book.last
+      @book = FactoryGirl.create(:book)
     end
 
     it "should show book title" do
-      @book.title.should == @title
+      @book.title.should =~ /Programming/
     end
 
     it "should show book published on" do
-      @book.published_on.to_s(:db).should == @published_on
+      @book.published_on.to_s(:db).should =~ /\d\d\d\d-\d\d-\d\d/
     end
 
     it "should show study status belonging to the book" do
-      Study.create(book_id: @book.id,status: 1)
+      FactoryGirl.create(:study)
       @study = @book.study
       @study.status.to_i.should == 1
-      Study.delete(@study.id)
     end
 
     it "should show categories which the book has" do
-      Category.create(id: 1,name:"HTML")
-      Category.create(id: 2,name:"CSS")
-      BooksCategories.create(book_id: @book.id,category_id: 1)
-      BooksCategories.create(book_id: @book.id,category_id: 2)
+      4.times { FactoryGirl.create(:category) }
+      4.times { FactoryGirl.create(:books_categories) }
       @categories = @book.categories
+
       @categories.each do |category|
-        category.name.should =~ /HTML|CSS/
+        category.name.class.should == String
       end
-      Category.delete(1)
-      Category.delete(2)
     end
 
     after do
-      Book.delete(@book.id)
+
     end
   end
 end
