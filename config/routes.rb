@@ -1,4 +1,12 @@
 Bookmanager::Application.routes.draw do
+  get "books/index"
+
+  get "books/show"
+
+  get "books/edit"
+
+  get "books/new"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
