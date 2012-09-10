@@ -6,7 +6,6 @@ gem 'rails', '3.2.8'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-gem 'spork'
 gem "twitter-bootstrap-rails"
 
 # Gems used only for assets and not required
@@ -22,20 +21,21 @@ group :assets do
 end
 
 group :development, :test do
- gem "rspec"
- gem "capybara"
- gem "rspec-rails"
- gem "guard-rspec"
- gem "jasmine"
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem "jasmine-rails"
+  gem "factory_girl_rails"
+  gem 'spork'
+  gem 'growl'
+  gem 'guard'
+  gem 'guard-bundler'
+  gem 'guard-rspec'
+  gem 'guard-spork'
+  gem 'rb-fsevent',require: false
+  gem 'simplecov'
+  gem 'simplecov-rcov'
 end
 
-group :development do
- gem "rails3-generators"
-end
-
-group :test do
- gem "factory_girl_rails"
-end
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
